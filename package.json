@@ -17,6 +17,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@mdi/js": "^7.4.47",
     "@vueuse/core": "^14.1.0",
     "chart.js": "^4.5.1",
