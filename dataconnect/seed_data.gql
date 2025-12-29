@@ -1,0 +1,60 @@
+mutation CreateSeedData @auth(level: PUBLIC, insecureReason: "This operation is only used to seed the database with initial data and does not expose any sensitive information.") @transaction {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      email: "demouser1@example.com",
+      role: "member"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      email: "demouser2@example.com",
+      role: "member"
+    }
+  ])
+  station_insertMany(data: [
+    {
+      id: "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      name: "Station Alpha",
+      capacity: 10,
+      hourlyRate: 5.50,
+      stationType: "VR",
+      status: "active"
+    },
+    {
+      id: "fedcba98-7654-3210-fedc-ba9876543210",
+      name: "Station Beta",
+      capacity: 5,
+      hourlyRate: 7.00,
+      stationType: "Racing",
+      status: "inactive"
+    }
+  ])
+  game_insertMany(data: [
+    {
+      id: "00000000-0000-0000-0000-000000000001",
+      title: "Awesome Game 1",
+      genre: "Action",
+      platform: "VR"
+    },
+    {
+      id: "00000000-0000-0000-0000-000000000002",
+      title: "Fantastic Game 2",
+      genre: "Racing",
+      platform: "PC"
+    }
+  ])
+  stationGame_insertMany(data: [
+    {
+      stationId: "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      gameId: "00000000-0000-0000-0000-000000000001",
+      installedDate: "2024-01-01T00:00:00Z"
+    },
+    {
+      stationId: "fedcba98-7654-3210-fedc-ba9876543210",
+      gameId: "00000000-0000-0000-0000-000000000002",
+      installedDate: "2024-02-15T00:00:00Z"
+    }
+  ])
+}

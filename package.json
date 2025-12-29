@@ -17,6 +17,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "@dataconnect/generated": "file:src/dataconnect-generated",
     "@mdi/js": "^7.4.47",
     "@vueuse/core": "^14.1.0",
     "chart.js": "^4.5.1",

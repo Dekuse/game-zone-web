@@ -1,0 +1,42 @@
+type User @table {
+  displayName: String!
+  email: String!
+  role: String!
+  phoneNumber: String
+  createdAt: Timestamp
+}
+
+type Game @table {
+  title: String!
+  genre: String!
+  platform: String!
+  description: String
+  imageUrl: String
+  releaseYear: Int
+}
+
+type Station @table {
+  name: String!
+  stationType: String!
+  capacity: Int!
+  description: String
+  hourlyRate: Float
+  status: String
+}
+
+type Booking @table {
+  user: User!
+  station: Station!
+  startTime: Timestamp!
+  endTime: Timestamp!
+  status: String!
+  createdAt: Timestamp
+  actualCheckInTime: Timestamp
+  actualCheckOutTime: Timestamp
+}
+
+type StationGame @table(key: ["station", "game"]) {
+  station: Station!
+  game: Game!
+  installedDate: Timestamp!
+}

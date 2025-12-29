@@ -1,0 +1,29 @@
+mutation AddNewStation($capacity: Int!, $description: String, $hourlyRate: Float!, $name: String!, $stationType: String!, $status: String) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  station_insert(data: {capacity: $capacity, description: $description, hourlyRate: $hourlyRate, name: $name, stationType: $stationType, status: $status})
+}
+
+query GetGamesByGenre($genre: String!) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  games(where: {genre: {eq: $genre}}) {
+    id
+    title
+    description
+    imageUrl
+    platform
+    releaseYear
+  }
+}
+
+mutation UpdateBookingCheckInTime($id: UUID!, $actualCheckInTime: Timestamp) @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  booking_update(id: $id, data: {actualCheckInTime: $actualCheckInTime})
+}
+
+query ListAvailableStations @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  stations(where: {status: {eq: "available"}}) {
+    id
+    name
+    capacity
+    description
+    hourlyRate
+    stationType
+  }
+}
